@@ -1,0 +1,173 @@
+body {
+    font-family: 'MinhaFonte', Courier, monospace;  /* adicionado fontes reservas */
+    background: var(--cor-secundaria);  /* caso a imagem de fundo não carregue */
+}
+
+body::before {
+    content: '';
+    background-image: url(../imagens/MHA/bg2.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.2;
+}
+
+main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 5vh;
+    padding-right: 5vh;
+}
+
+.cabecalho {
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.cabecalho .titulo {
+    color: rgb(255, 241, 0);
+    text-transform: uppercase;
+    font-size: 80px;
+    line-height: 102px;
+    -webkit-text-stroke: 3px black;
+}
+
+.selecao-de-personagens {
+    display: flex;
+    align-items: center;    /* alinha verticalmente no centro */
+    justify-content: center;    /* alinha horizontalmente no centro */
+}
+
+.selecao-de-personagens .personagem-grande {
+    text-align: center;
+    width: 30%;
+    height: 70vh;
+    position: relative;
+}
+
+.selecao-de-personagens .personagem-grande img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    max-height: 70vh;
+    max-width: 70vh;
+}
+
+.selecao-de-personagens .personagem-grande .nome::before {
+    content: '';
+    height: 30px;
+    width: 100%;
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+}
+
+.selecao-de-personagens .personagem-grande .nome h2 {
+    color: var(--cor-padrao);
+    font-family: 'MinhaFonte', sans-serif;
+    position: absolute;
+    font-size: 40px;
+    bottom: 0px;
+    width: 100%;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #000;
+}
+
+.selecao-de-personagens .personagem-grande.personagem-jogador-1 .nome::before {
+    background-color: var(--cor-azul-principal);
+}
+
+.selecao-de-personagens .personagem-grande.personagem-jogador-2 .nome::before {
+    background-color: var(--cor-vermelha-principal);
+}
+
+.selecao-de-personagens .lista-de-personagens {
+    display: flex;
+    flex-wrap: wrap;    /* Quando não couber todos os elementos na tela, acontece uma quebra pra baixo */
+    max-width: 600px;
+    justify-content: center;
+    gap: 12px;    /* espaçamento entre os itens da lista */
+}
+
+.selecao-de-personagens .lista-de-personagens .personagem {
+    border: 2px solid var(--cor-padrao);
+    background-color: var(--cor-padrao);
+    width: 20%;
+    height: 120px;
+    cursor: pointer;
+    z-index: 2;
+    border-radius: 5px;
+    position: relative;
+    transition: 0.15s ease-in-out;
+}
+
+.selecao-de-personagens .lista-de-personagens .personagem img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.selecao-de-personagens .lista-de-personagens .personagem.selecionado {
+    border: 2px solid var(--cor-azul-media);
+    animation: c-glowing-blue .3s ease-in-out infinite;
+    animation-direction: alternate;
+}
+
+.selecao-de-personagens .lista-de-personagens .personagem:hover {
+    animation: c-glowing-blue .3s ease-in-out infinite;
+    animation-direction: alternate;
+    transform: scale(1.07);
+    z-index: 2;
+}
+
+.selecao-de-personagens .lista-de-personagens .personagem.jogador-2-selecionado {
+    border: 2px solid var(--cor-vermelha-media);
+    animation: c-glowing-red .3s ease-in-out infinite;
+    animation-direction: alternate;
+}
+
+.selecao-de-personagens .lista-de-personagens .personagem.personagem.jogador-2-selecionado:hover {
+    animation: c-glowing-red .3s ease-in-out infinite;
+    animation-direction: alternate;
+}
+
+.selecao-de-personagens .lista-de-personagens .personagem .tag {
+    font-family: 'Times New Roman', Times, serif;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    color: var(--cor-azul-media);
+    transition: opacity .3s ease-in-out;
+    animation: text-glowing-blue .3s ease-in-out infinite;
+    animation-direction: alternate;
+}
+
+.selecao-de-personagens .lista-de-personagens .personagem .tag {
+    display: none;
+    font-family: 'Times New Roman', Times, serif;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    color: var(--cor-azul-media);
+    transition: opacity .3s ease-in-out;
+    animation: text-glowing-blue .3s ease-in-out infinite;
+    animation-direction: alternate;
+}
+
+.selecao-de-personagens .lista-de-personagens .personagem.selecionado .tag {
+    display: block;     /* so aparece 1p no personagem selecionado */
+    animation: text-glowing-blue .3s ease-in-out infinite;
+    animation-direction: alternate;
+}
+
+.selecao-de-personagens .lista-de-personagens .personagem.jogador-2-selecionado .tag {
+    display: block;      /* so aparece 2p no personagem selecionado */
+    animation: text-glowing-red .3s ease-in-out infinite;
+    animation-direction: alternate;
+}
